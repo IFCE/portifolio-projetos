@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daniel Alencar Barros Tavares — Desafios de Engenharia &amp; Soluções</title>
+<meta name="description" content="Catálogo anonimizado de desafios técnicos e as soluções aplicadas: visão computacional (PDI + redes neurais), sistemas distribuídos, arquitetura cloud, serverless e agentes de IA em produção. Stack completa ao final.">
+<meta name="author" content="Daniel Alencar Barros Tavares">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f141a" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Daniel Alencar Barros Tavares — Desafios de Engenharia & Soluções">
+<meta property="og:description" content="Problemas difíceis de engenharia e as abordagens que os resolveram — visão computacional, sistemas distribuídos, cloud e IA em produção.">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  html { -webkit-text-size-adjust: 100%; }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; }
+  img, canvas { max-width: 100%; }
+</style>
+</head>
+<body>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f5f7fa;
+    --card: #ffffff;
+    --ink: #1a2027;
+    --muted: #586472;
+    --faint: #8a95a2;
+    --line: #e4e8ee;
+    --line-strong: #d3dae2;
+    --accent: #0b5fd1;
+    --accent-ink: #0a4fae;
+    --accent-wash: #eaf1fc;
+    --good: #1f9d57;
+    --shadow-sm: 0 1px 2px rgba(16,24,40,.04);
+    --shadow: 0 1px 2px rgba(16,24,40,.05), 0 8px 24px rgba(16,24,40,.07);
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+    --measure: 68ch;
+    --edge: clamp(20px, 5vw, 64px);
+    --maxw: 1180px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f141a; --bg-alt: #141b23; --card: #171f28;
+      --ink: #e7edf4; --muted: #9dabb8; --faint: #6c7986;
+      --line: #232d38; --line-strong: #2d3945;
+      --accent: #519dff; --accent-ink: #74b2ff; --accent-wash: rgba(81,157,255,.13);
+      --good: #47c780;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.3);
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 30px rgba(0,0,0,.34);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #ffffff; --bg-alt: #f5f7fa; --card: #ffffff;
+    --ink: #1a2027; --muted: #586472; --faint: #8a95a2;
+    --line: #e4e8ee; --line-strong: #d3dae2;
+    --accent: #0b5fd1; --accent-ink: #0a4fae; --accent-wash: #eaf1fc;
+    --good: #1f9d57; --shadow-sm: 0 1px 2px rgba(16,24,40,.04);
+    --shadow: 0 1px 2px rgba(16,24,40,.05), 0 8px 24px rgba(16,24,40,.07);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f141a; --bg-alt: #141b23; --card: #171f28;
+    --ink: #e7edf4; --muted: #9dabb8; --faint: #6c7986;
+    --line: #232d38; --line-strong: #2d3945;
+    --accent: #519dff; --accent-ink: #74b2ff; --accent-wash: rgba(81,157,255,.13);
+    --good: #47c780; --shadow-sm: 0 1px 2px rgba(0,0,0,.3);
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 30px rgba(0,0,0,.34);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--font-sans); line-height: 1.6; font-size: 17px;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--edge); }
+  a { color: var(--accent); text-decoration: none; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 5px; }
+
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); margin: 0; font-weight: 500;
+  }
+
+  /* nav */
+  nav.top {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 62px; }
+  .nav-brand { font-weight: 650; font-size: 16px; letter-spacing: -.01em; color: var(--ink); }
+  .nav-brand small { display: block; font-family: var(--font-mono); font-weight: 400; font-size: 11.5px; color: var(--muted); letter-spacing: .01em; }
+  .nav-links { display: flex; align-items: center; gap: 26px; }
+  .nav-links a { color: var(--muted); font-size: 14.5px; font-weight: 500; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--accent); color: #fff; padding: 9px 16px; border-radius: 8px;
+    font-size: 14px; font-weight: 550; transition: background .18s ease;
+  }
+  .nav-cta:hover { background: var(--accent-ink); color: #fff; }
+  @media (max-width: 640px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+  /* hero */
+  .hero {
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(1100px 480px at 78% -12%, var(--accent-wash), transparent 62%),
+      var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero .wrap { padding-block: clamp(56px, 9vw, 108px) clamp(44px, 7vw, 88px); }
+  .hero-inner { max-width: 940px; }
+  .avail {
+    display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono);
+    font-size: 12.5px; color: var(--muted); border: 1px solid var(--line-strong);
+    border-radius: 999px; padding: 6px 13px; background: var(--card);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--good); }
+  h1 {
+    font-size: clamp(34px, 5.6vw, 62px); line-height: 1.05; letter-spacing: -.035em;
+    font-weight: 700; margin: 22px 0 0; text-wrap: balance;
+  }
+  h1 .accent { color: var(--accent); }
+  .lede { font-size: clamp(17px, 1.9vw, 21px); color: var(--muted); max-width: var(--measure); margin: 22px 0 0; text-wrap: pretty; }
+  .cred { font-family: var(--font-mono); font-size: 13.5px; color: var(--faint); letter-spacing: .02em; margin: 26px 0 0; }
+  .cred b { color: var(--ink); font-weight: 600; }
+  .cta-row { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 30px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 550;
+    padding: 13px 24px; border-radius: 10px; cursor: pointer; border: 1px solid transparent;
+    transition: transform .12s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { transform: translateY(-1px); background: var(--accent-ink); color: #fff; }
+  .btn-ghost { background: var(--card); color: var(--ink); border-color: var(--line-strong); }
+  .btn-ghost:hover { transform: translateY(-1px); border-color: var(--accent); color: var(--accent); }
+
+  /* sections */
+  section { padding-block: clamp(54px, 7vw, 92px); }
+  .band { background: var(--bg-alt); border-block: 1px solid var(--line); }
+  .sec-head { max-width: var(--measure); margin-bottom: clamp(22px, 3vw, 36px); }
+  h2 { font-size: clamp(25px, 3.2vw, 36px); letter-spacing: -.025em; font-weight: 680; margin: 12px 0 0; text-wrap: balance; line-height: 1.14; }
+  .sec-head p { color: var(--muted); margin: 14px 0 0; font-size: 17px; }
+
+  .group {
+    font-size: 14px; font-weight: 650; letter-spacing: -.01em; color: var(--ink);
+    margin: clamp(38px, 5vw, 54px) 0 18px; display: flex; align-items: center; gap: 14px;
+  }
+  .group:first-of-type { margin-top: 4px; }
+  .group::before { content: ""; width: 18px; height: 3px; border-radius: 3px; background: var(--accent); flex: none; }
+  .group::after { content: ""; height: 1px; flex: 1; background: var(--line); }
+
+  /* cards */
+  .cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .case {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: clamp(20px, 2.2vw, 26px); display: flex; flex-direction: column; gap: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color .18s ease, transform .15s ease, box-shadow .2s ease;
+  }
+  .case:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .case .tag {
+    align-self: flex-start; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--accent); background: var(--accent-wash); padding: 5px 10px; border-radius: 6px; font-weight: 500;
+  }
+  .case h3 { margin: 0; font-size: 20px; letter-spacing: -.02em; line-height: 1.28; font-weight: 640; }
+  .case p { margin: 0; font-size: 15.5px; }
+  .lbl {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--faint); font-weight: 500; margin-right: 8px;
+  }
+  .prob { color: var(--muted); }
+  .sol { color: var(--ink); padding-top: 12px; border-top: 1px solid var(--line); }
+  .sol .lbl { color: var(--accent); }
+  .case em { font-style: normal; color: var(--accent-ink); font-weight: 600; }
+  :root[data-theme="dark"] .case em { color: var(--accent-ink); }
+
+  /* domains */
+  .domains { display: flex; flex-wrap: wrap; gap: 10px; }
+  .domain {
+    font-size: 14.5px; padding: 9px 15px; border-radius: 999px;
+    border: 1px solid var(--line-strong); color: var(--muted); background: var(--card);
+    transition: color .16s ease, border-color .16s ease;
+  }
+  .domain:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* stack (comprehensive, at the end) */
+  .stackwrap { display: flex; flex-direction: column; gap: 4px; }
+  .stackrow {
+    display: grid; grid-template-columns: 210px 1fr; gap: 24px;
+    padding-block: 20px; border-top: 1px solid var(--line); align-items: start;
+  }
+  .stackrow:last-child { border-bottom: 1px solid var(--line); }
+  .stackrow h4 {
+    margin: 4px 0 0; font-size: 15px; font-weight: 620; letter-spacing: -.01em; color: var(--ink);
+  }
+  .stackrow h4 small { display: block; font-family: var(--font-mono); font-size: 11.5px; font-weight: 400; color: var(--faint); margin-top: 4px; letter-spacing: .02em; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .t {
+    font-family: var(--font-mono); font-size: 13px; padding: 6px 11px; border-radius: 7px;
+    background: var(--bg-alt); border: 1px solid var(--line); color: var(--ink);
+  }
+  .band .t { background: var(--card); }
+  @media (max-width: 720px) { .stackrow { grid-template-columns: 1fr; gap: 12px; } }
+
+  /* footer */
+  footer.cta { border-top: 1px solid var(--line); background: var(--bg-alt); }
+  .cta-grid { display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; padding-block: clamp(46px, 6vw, 82px); }
+  .cta-grid h2 { max-width: 18ch; }
+  .contacts { display: flex; flex-direction: column; gap: 11px; }
+  .contact { font-size: 16px; color: var(--ink); display: inline-flex; align-items: center; gap: 14px; }
+  .contact span { color: var(--faint); width: 92px; display: inline-block; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; }
+  .colophon {
+    border-top: 1px solid var(--line); padding-block: 22px; font-family: var(--font-mono);
+    font-size: 12.5px; color: var(--faint); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; letter-spacing: .02em;
+  }
+
+  @media (max-width: 900px) { .cases { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .btn, .case, .domain { transition: none; } }
+</style>
+
+<nav class="top">
+  <div class="wrap nav-row">
+    <div class="nav-brand">Daniel Alencar Barros Tavares<small>Arquiteto de Software &amp; Líder Técnico</small></div>
+    <div class="nav-links">
+      <a href="#desafios">Desafios</a>
+      <a href="#stack">Stack</a>
+      <a class="nav-cta" href="mailto:danieldgt@gmail.com">Falar comigo</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="avail"><span class="dot" aria-hidden="true"></span> Aberto a novos desafios</span>
+      <h1>Desafios de engenharia — e as <span class="accent">soluções que os resolveram</span>.</h1>
+      <p class="lede">Uma seleção anonimizada de problemas técnicos reais e a abordagem aplicada a cada um: visão computacional, sistemas distribuídos, arquitetura cloud e IA em produção. Direto ao ponto: o desafio, a solução, e a stack completa ao final.</p>
+      <p class="cred">25 anos de carreira · 10+ times liderados · <b>20+ domínios</b> · <b>~110 repositórios</b> · 6 linguagens em produção</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#desafios">Ver os desafios ↓</a>
+        <a class="btn btn-ghost" href="#stack">Ver a stack</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="desafios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Desafio → Solução</p>
+      <h2>Cada card: um problema real e a decisão técnica que o resolveu.</h2>
+    </div>
+
+    <div class="group">IA aplicada &amp; visão computacional</div>
+    <div class="cases">
+      <article class="case">
+        <span class="tag">Carcinicultura</span>
+        <h3>Contagem automática de pós-larvas de camarão</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Contar milhares de pós-larvas em fotos de campo, com luz irregular e sobreposição de indivíduos.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>PDI</em> para segmentar + <em>rede neural (deep learning)</em> para contar e medir; app mobile <em>offline-first</em> com fila de sincronização.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Inspeção industrial</span>
+        <h3>Comparação visual de amostra vs. referência</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Aprovar uma amostra contra a peça-referência com poucos exemplos e ambiente não controlado.</p>
+        <p class="sol"><span class="lbl">Solução</span>Embeddings <em>DINOv2</em> + <em>vector store</em> para similaridade few-shot; revisão humana só por exceção.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Engenharia acústica</span>
+        <h3>"Auralizar" o ruído dentro de edificações</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Tornar audível o ruído percebido dentro de um apartamento a partir da planta (DXF).</p>
+        <p class="sol"><span class="lbl">Solução</span>Pipeline serverless: DXF → <em>GAN de super-resolução espectral</em> → auralização com atenuação física.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Agentes de IA</span>
+        <h3>Assistente de IA confiável sobre dados de negócio</h3>
+        <p class="prob"><span class="lbl">Desafio</span>LLM consultar dados sem alucinar, sem estourar custo e respeitando as permissões de cada usuário.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>Multiagente</em> + <em>RAG</em>; <em>tool-calling tenant-aware com RBAC</em>; estratégia determinístico-primeiro para conter custo.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Geração de código</span>
+        <h3>De DDL e linguagem natural a um app funcional</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Gerar CRUDs, APIs e UI de forma 100% local, por privacidade.</p>
+        <p class="sol"><span class="lbl">Solução</span>Multiagente com <em>LLMs locais (Ollama)</em> gerando <em>Spring/NestJS/FastAPI</em> + frontend, com <em>LLM-as-judge</em> no loop.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Saúde · RAG</span>
+        <h3>Apoio à decisão clínica com roteamento local/remoto</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Predizer CID-10 e recuperar protocolos preservando privacidade e controlando custo.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>Roteador local × remoto</em> por sensibilidade; <em>RAG + reranking</em>; PII nunca é enviada ao LLM.</p>
+      </article>
+    </div>
+
+    <div class="group">Sistemas distribuídos, telecom &amp; tempo real</div>
+    <div class="cases">
+      <article class="case">
+        <span class="tag">Telecom · redes ópticas</span>
+        <h3>Correlação de causa-raiz de alarmes</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Rajadas de milhares de alarmes de equipamentos escondiam a falha real a montante.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>Topologia em árvore</em> + <em>janela temporal</em> colapsam a rajada num único alarme de causa-raiz; ingestão via <em>Kafka</em>.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Grafos · CS aplicada</span>
+        <h3>Blast radius: o impacto real de uma falha</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Saber quantos clientes uma falha afeta e validar as regras de capacidade da rede.</p>
+        <p class="sol"><span class="lbl">Solução</span>Grafo dirigido (<em>JGraphT</em>) com <em>Dijkstra</em> + <em>DFS</em> para a subárvore afetada; <em>Observer</em> impõe as regras.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Consistência física</span>
+        <h3>Coordenar software com hardware que não perdoa</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Autorizar/parar equipamento físico com consistência mesmo sob crash e colisões.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>WAL de reservas</em> + <em>reaper</em> de estado órfão + preempção; invariantes no banco por <em>triggers append-only</em>.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Tempo real</span>
+        <h3>Realtime com escala horizontal</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Atualizar muitos clientes em tempo real sem prender estado numa única instância.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>MQTT via AWS IoT Core</em> por tópico de usuário; ou <em>SSE</em> com <em>Redis pub/sub</em> para fan-out entre réplicas.</p>
+      </article>
+    </div>
+
+    <div class="group">Arquitetura cloud, serverless &amp; multi-tenancy</div>
+    <div class="cases">
+      <article class="case">
+        <span class="tag">Multi-tenancy</span>
+        <h3>Isolar dados entre clientes, em 5 estratégias</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Cada produto pede um trade-off diferente de isolamento, custo e operação.</p>
+        <p class="sol"><span class="lbl">Solução</span>Tenancy por <em>schema, filtro, database, fila</em> ou <em>stack por cliente</em>, sempre <em>fail-closed</em> e com tenant vindo do JWT.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Serverless</span>
+        <h3>Cold start sob controle ao migrar para Lambda</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Migrar monólitos para serverless sem pagar o preço da latência de inicialização.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>Quarkus native (GraalVM)</em> em AWS Lambda, deploy via <em>SAM</em>, dominando as armadilhas do native-image.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Zero-trust · legado</span>
+        <h3>Sincronizar cloud ↔ on-premise atrás de firewall</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Entregar dados a máquinas on-premise atrás de firewall, sem VPN e sem chaves fixas.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>Pull-based (SQS)</em> + <em>STS efêmero</em> escopado; cliente <em>Rust/Tauri</em>; interop cripto <em>Delphi↔Rust</em>.</p>
+      </article>
+      <article class="case">
+        <span class="tag">ML + XAI</span>
+        <h3>Predição explicável, serverless</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Servir recomendação/predição com explicabilidade e cold start baixo, por tenant.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>DBSCAN/KDTree inline</em> (Smile) em Quarkus native, com <em>feature importances</em> já no contrato de resposta.</p>
+      </article>
+    </div>
+
+    <div class="group">Engenharia de dados &amp; integração</div>
+    <div class="cases">
+      <article class="case">
+        <span class="tag">Fintech</span>
+        <h3>Extrair boletos de e-mail sem inventar dados</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Ler valor, vencimento e credor automaticamente, sem alucinar e com custo de IA baixo.</p>
+        <p class="sol"><span class="lbl">Solução</span>Determinístico-primeiro: <em>dígito verificador</em> → <em>barcode (WASM)</em> → visão por IA só no fim, exigindo dado literal.</p>
+      </article>
+      <article class="case">
+        <span class="tag">ETL de alto volume</span>
+        <h3>Importar base de 94 colunas com resiliência</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Carregar arquivos massivos sem estourar memória e sem corromper por cargas concorrentes.</p>
+        <p class="sol"><span class="lbl">Solução</span>Streaming em <em>batches</em>, pool de threads, <em>retry por lote</em> e <em>lock de importação</em>.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Fontes sem API</span>
+        <h3>Extrair dados de portais governamentais</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Sem API pública, HTML instável e URLs ofuscadas.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>Scraping assíncrono</em> (aiohttp + BeautifulSoup) + <em>engenharia reversa das URLs</em> (Base64).</p>
+      </article>
+      <article class="case">
+        <span class="tag">Reconciliação financeira</span>
+        <h3>Auditoria "Previsto × Executado"</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Cruzar execução real com o pactuado, recebendo planilhas por e-mail em formatos variados.</p>
+        <p class="sol"><span class="lbl">Solução</span>Ingestão por <em>IMAP</em> (MIME recursivo) + <em>motor de regras</em>; relatório em PDF/XLSX/CSV.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Onde esses desafios apareceram</p>
+      <h2>Domínios de negócio já resolvidos.</h2>
+    </div>
+    <div class="domains">
+      <span class="domain">Telecom / redes ópticas</span>
+      <span class="domain">Varejo · PDV · ERP</span>
+      <span class="domain">Fiscal (NF-e)</span>
+      <span class="domain">Fintech</span>
+      <span class="domain">IoT industrial</span>
+      <span class="domain">Visão computacional</span>
+      <span class="domain">Aquicultura</span>
+      <span class="domain">Educação</span>
+      <span class="domain">RH · recrutamento</span>
+      <span class="domain">Saúde (RAG médico)</span>
+      <span class="domain">Indústria 4.0</span>
+      <span class="domain">Jurídico · cartorário</span>
+      <span class="domain">Integração gov</span>
+      <span class="domain">Marketplace</span>
+      <span class="domain">Plataformas de agentes de IA</span>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Stack completa</p>
+      <h2>O arsenal técnico por trás das soluções.</h2>
+      <p>Tecnologias usadas em produção, PoCs e P&amp;D ao longo do acervo.</p>
+    </div>
+    <div class="stackwrap">
+      <div class="stackrow">
+        <h4>Linguagens</h4>
+        <div class="tags">
+          <span class="t">Java</span><span class="t">Kotlin</span><span class="t">TypeScript</span><span class="t">JavaScript</span><span class="t">Python</span><span class="t">Go</span><span class="t">Rust</span><span class="t">C# / .NET</span><span class="t">Dart</span><span class="t">Delphi</span><span class="t">C++</span><span class="t">SQL</span><span class="t">Bash</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>Backend <small>frameworks</small></h4>
+        <div class="tags">
+          <span class="t">Spring Boot</span><span class="t">Spring Cloud</span><span class="t">Quarkus (native/GraalVM)</span><span class="t">Jakarta EE / CDI</span><span class="t">WildFly</span><span class="t">Fastify</span><span class="t">Express</span><span class="t">NestJS</span><span class="t">Deno</span><span class="t">FastAPI</span><span class="t">Django / DRF</span><span class="t">Gin (Go)</span><span class="t">Tauri (Rust)</span><span class="t">Celery</span><span class="t">APScheduler</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>Frontend</h4>
+        <div class="tags">
+          <span class="t">Angular 5→21</span><span class="t">Signals / Zoneless</span><span class="t">React 18/19</span><span class="t">Next.js 15</span><span class="t">Remix</span><span class="t">Vite</span><span class="t">RxJS</span><span class="t">Tailwind CSS</span><span class="t">PrimeNG</span><span class="t">Radix / shadcn</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>Mobile</h4>
+        <div class="tags">
+          <span class="t">Flutter</span><span class="t">React Native / Expo</span><span class="t">Kotlin Multiplatform</span><span class="t">Jetpack Compose</span><span class="t">Android nativo</span><span class="t">Riverpod</span><span class="t">MobX</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>Bancos &amp; busca</h4>
+        <div class="tags">
+          <span class="t">PostgreSQL</span><span class="t">pgvector</span><span class="t">MariaDB</span><span class="t">SQL Server</span><span class="t">DynamoDB</span><span class="t">MongoDB</span><span class="t">Redis</span><span class="t">Elasticsearch</span><span class="t">ChromaDB</span><span class="t">FAISS</span><span class="t">H2 / LibSQL</span><span class="t">Flyway</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>Mensageria <small>&amp; streaming</small></h4>
+        <div class="tags">
+          <span class="t">Apache Kafka</span><span class="t">Kafka Connect</span><span class="t">Debezium (CDC)</span><span class="t">RabbitMQ</span><span class="t">AWS SQS</span><span class="t">AWS SNS</span><span class="t">Redis pub/sub</span><span class="t">MQTT</span><span class="t">WebSocket / STOMP</span><span class="t">SSE</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>AWS</h4>
+        <div class="tags">
+          <span class="t">Lambda</span><span class="t">API Gateway</span><span class="t">Cognito</span><span class="t">DynamoDB</span><span class="t">S3</span><span class="t">SQS / SNS</span><span class="t">IoT Core</span><span class="t">Secrets Manager</span><span class="t">STS</span><span class="t">ECS / Fargate</span><span class="t">CloudFront</span><span class="t">RDS / Aurora</span><span class="t">VPC</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>Infra <small>IaC &amp; orquestração</small></h4>
+        <div class="tags">
+          <span class="t">Docker</span><span class="t">Kubernetes</span><span class="t">Kustomize</span><span class="t">Linkerd</span><span class="t">Terraform</span><span class="t">AWS CDK</span><span class="t">Serverless Framework</span><span class="t">AWS SAM</span><span class="t">Railway</span><span class="t">LocalStack</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>Object storage</h4>
+        <div class="tags">
+          <span class="t">AWS S3</span><span class="t">Cloudflare R2</span><span class="t">MinIO</span><span class="t">Tigris</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>IA / LLM / ML</h4>
+        <div class="tags">
+          <span class="t">PDI</span><span class="t">Visão computacional</span><span class="t">Redes neurais / Deep Learning</span><span class="t">PyTorch</span><span class="t">TensorFlow / Keras</span><span class="t">DINOv2</span><span class="t">GAN</span><span class="t">Smile ML</span><span class="t">XAI (SHAP-like)</span><span class="t">sentence-transformers</span><span class="t">cross-encoder reranking</span><span class="t">QLoRA</span><span class="t">LangChain</span><span class="t">LangGraph</span><span class="t">Mastra</span><span class="t">MCP</span><span class="t">RAG</span><span class="t">Ollama / vLLM</span><span class="t">Claude</span><span class="t">OpenAI</span><span class="t">OpenRouter</span><span class="t">Apache Commons Math</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>Auth &amp; segurança</h4>
+        <div class="tags">
+          <span class="t">OAuth2 / OIDC</span><span class="t">AWS Cognito</span><span class="t">Keycloak</span><span class="t">JWT</span><span class="t">RBAC</span><span class="t">mTLS (X.509)</span><span class="t">AES-256-GCM</span><span class="t">XML-DSig / PKCS#12</span><span class="t">LGPD by design</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>Qualidade <small>&amp; testes</small></h4>
+        <div class="tags">
+          <span class="t">JUnit / Mockito</span><span class="t">Testcontainers</span><span class="t">ArchUnit</span><span class="t">Vitest</span><span class="t">Playwright</span><span class="t">pytest / mypy</span><span class="t">JaCoCo</span><span class="t">Spring REST Docs</span><span class="t">ADRs</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>Observabilidade <small>&amp; dados</small></h4>
+        <div class="tags">
+          <span class="t">Prometheus</span><span class="t">Grafana</span><span class="t">Loki</span><span class="t">OpenTelemetry</span><span class="t">Sentry</span><span class="t">New Relic</span><span class="t">Nagios / Zabbix</span><span class="t">pandas</span><span class="t">Polars</span><span class="t">medallion / star schema</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cta">
+  <div class="wrap cta-grid">
+    <div>
+      <p class="eyebrow">Vamos conversar</p>
+      <h2>Se o desafio é difícil, é o meu tipo de problema.</h2>
+    </div>
+    <div class="contacts">
+      <a class="contact" href="mailto:danieldgt@gmail.com"><span>E-mail</span> danieldgt@gmail.com</a>
+      <a class="contact" href="https://wa.me/5585999145655"><span>WhatsApp</span> (85) 99914-5655</a>
+      <a class="contact" href="tel:+5585999145655"><span>Telefone</span> (85) 99914-5655</a>
+    </div>
+  </div>
+  <div class="wrap colophon">
+    <span>Daniel Alencar Barros Tavares · Arquiteto de Software &amp; Líder Técnico</span>
+    <span>Projetos e empresas anonimizados por confidencialidade</span>
+  </div>
+</footer>
+
+</body>
+</html>
