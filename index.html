@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daniel Alencar Barros Tavares — Desafios de Engenharia &amp; Soluções</title>
-<meta name="description" content="Catálogo anonimizado de desafios técnicos e as soluções aplicadas: visão computacional (PDI + redes neurais), sistemas distribuídos, arquitetura cloud, serverless e agentes de IA em produção. Stack completa ao final.">
+<meta name="description" content="Catálogo anonimizado de desafios técnicos e as soluções aplicadas: visão computacional (PDI + redes neurais), sistemas distribuídos, arquitetura cloud, serverless, sistemas embarcados e agentes de IA em produção. Stack completa ao final.">
 <meta name="author" content="Daniel Alencar Barros Tavares">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
@@ -13,9 +13,6 @@
 <meta property="og:title" content="Daniel Alencar Barros Tavares — Desafios de Engenharia & Soluções">
 <meta property="og:description" content="Problemas difíceis de engenharia e as abordagens que os resolveram — visão computacional, sistemas distribuídos, cloud e IA em produção.">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   html { -webkit-text-size-adjust: 100%; }
   *, *::before, *::after { box-sizing: border-box; }
@@ -40,8 +37,8 @@
     --good: #1f9d57;
     --shadow-sm: 0 1px 2px rgba(16,24,40,.04);
     --shadow: 0 1px 2px rgba(16,24,40,.05), 0 8px 24px rgba(16,24,40,.07);
-    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
-    --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", "Noto Sans Mono", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
     --measure: 68ch;
     --edge: clamp(20px, 5vw, 64px);
     --maxw: 1180px;
@@ -144,8 +141,8 @@
   }
   .btn-primary { background: var(--accent); color: #fff; }
   .btn-primary:hover { transform: translateY(-1px); background: var(--accent-ink); color: #fff; }
-  .btn-ghost { background: var(--card); color: var(--ink); border-color: var(--line-strong); }
-  .btn-ghost:hover { transform: translateY(-1px); border-color: var(--accent); color: var(--accent); }
+  .btn-ghost { background: var(--accent-wash); color: var(--accent-ink); border-color: color-mix(in srgb, var(--accent) 24%, transparent); }
+  .btn-ghost:hover { transform: translateY(-1px); border-color: var(--accent); color: var(--accent-ink); }
 
   /* sections */
   section { padding-block: clamp(54px, 7vw, 92px); }
@@ -233,7 +230,7 @@
 
 <nav class="top">
   <div class="wrap nav-row">
-    <div class="nav-brand">LabVicia<small>Arquiteto de Software &amp; Líder Técnico</small></div>
+    <div class="nav-brand">Daniel Alencar Barros Tavares<small>Arquitetura de Software &amp; Equipe de Engenharia</small></div>
     <div class="nav-links">
       <a href="#desafios">Desafios</a>
       <a href="#stack">Stack</a>
@@ -245,13 +242,13 @@
 <div class="hero">
   <div class="wrap">
     <div class="hero-inner">
-      <span class="avail"><span class="dot" aria-hidden="true"></span> Aberto a novos desafios</span>
-      <h1>Desafios de engenharia — e as <span class="accent">soluções que os resolveram</span>.</h1>
-      <p class="lede">Uma seleção anonimizada de problemas técnicos reais e a abordagem aplicada a cada um: visão computacional, sistemas distribuídos, arquitetura cloud e IA em produção. Direto ao ponto: o desafio, a solução, e a stack completa ao final.</p>
-      <p class="cred">25 anos de carreira · 10+ times liderados · <b>20+ domínios</b> · <b>~110 repositórios</b> · 6 linguagens em produção</p>
+      <span class="avail"><span class="dot" aria-hidden="true"></span> Disponível para novos projetos e parcerias</span>
+      <h1>Problemas difíceis de engenharia, <span class="accent">resolvidos em produção</span>.</h1>
+      <p class="lede">Somos uma equipe de engenharia liderada por Daniel Alencar, arquiteto de software com 25 anos de estrada. Abaixo, um recorte anonimizado de problemas reais que resolvemos — visão computacional, sistemas distribuídos, cloud, sistemas embarcados e IA em produção — com a decisão técnica de cada um e a stack completa ao final. É o tipo de trabalho que levamos para o seu time.</p>
+      <p class="cred">25+ anos de carreira · 10+ times liderados · <b>20+ domínios de negócio</b> · <b>~110 repositórios</b> · 6+ linguagens em produção</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#desafios">Ver os desafios ↓</a>
-        <a class="btn btn-ghost" href="#stack">Ver a stack</a>
+        <a class="btn btn-ghost" href="mailto:danieldgt@gmail.com">Falar comigo</a>
       </div>
     </div>
   </div>
@@ -261,7 +258,8 @@
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Desafio → Solução</p>
-      <h2>Cada card: um problema real e a decisão técnica que o resolveu.</h2>
+      <h2>Cada caso: um problema real, a decisão técnica e o que ela entregou.</h2>
+      <p>O que você contrata não é uma lista de tecnologias, e sim uma equipe com critério para escolher a certa em cada contexto. É isso que os casos abaixo mostram.</p>
     </div>
 
     <div class="group">IA aplicada &amp; visão computacional</div>
@@ -314,21 +312,49 @@
       </article>
       <article class="case">
         <span class="tag">Grafos · CS aplicada</span>
-        <h3>Blast radius: o impacto real de uma falha</h3>
+        <h3>Raio de impacto: o alcance real de uma falha</h3>
         <p class="prob"><span class="lbl">Desafio</span>Saber quantos clientes uma falha afeta e validar as regras de capacidade da rede.</p>
         <p class="sol"><span class="lbl">Solução</span>Grafo dirigido (<em>JGraphT</em>) com <em>Dijkstra</em> + <em>DFS</em> para a subárvore afetada; <em>Observer</em> impõe as regras.</p>
       </article>
       <article class="case">
         <span class="tag">Consistência física</span>
-        <h3>Coordenar software com hardware que não perdoa</h3>
+        <h3>Coordenar software com hardware físico crítico</h3>
         <p class="prob"><span class="lbl">Desafio</span>Autorizar/parar equipamento físico com consistência mesmo sob crash e colisões.</p>
         <p class="sol"><span class="lbl">Solução</span><em>WAL de reservas</em> + <em>reaper</em> de estado órfão + preempção; invariantes no banco por <em>triggers append-only</em>.</p>
       </article>
       <article class="case">
         <span class="tag">Tempo real</span>
-        <h3>Realtime com escala horizontal</h3>
+        <h3>Tempo real com escala horizontal</h3>
         <p class="prob"><span class="lbl">Desafio</span>Atualizar muitos clientes em tempo real sem prender estado numa única instância.</p>
         <p class="sol"><span class="lbl">Solução</span><em>MQTT via AWS IoT Core</em> por tópico de usuário; ou <em>SSE</em> com <em>Redis pub/sub</em> para fan-out entre réplicas.</p>
+      </article>
+    </div>
+
+    <div class="group">Sistemas embarcados &amp; hardware de baixo custo</div>
+    <div class="cases">
+      <article class="case">
+        <span class="tag">IoT industrial</span>
+        <h3>Gateway de baixo custo para chão de fábrica</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Coletar dados de máquinas legadas em ambiente ruidoso, sem trocar o parque instalado.</p>
+        <p class="sol"><span class="lbl">Solução</span>Firmware em <em>ESP32/C++</em> lendo <em>Modbus RTU (RS-485)</em>, buffer em flash e envio via <em>MQTT</em> com reconexão; atualização remota por <em>OTA</em>.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Wearables</span>
+        <h3>Wearable de monitoramento com autonomia de dias</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Medir sinais em campo com bateria longa e conectividade intermitente.</p>
+        <p class="sol"><span class="lbl">Solução</span>MCU com <em>BLE low-power</em>, amostragem por interrupção e <em>deep sleep</em>; sincronização com o app apenas quando há link.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Ambiente hostil</span>
+        <h3>Eletrônica que opera sob vibração e ruído elétrico</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Funcionar com poeira, variação térmica e interferência sem falso disparo.</p>
+        <p class="sol"><span class="lbl">Solução</span>Debounce em hardware + filtragem em firmware, <em>watchdog</em> e <em>brown-out reset</em>; proteção de entrada e layout pensado para EMI.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Edge · TinyML</span>
+        <h3>Inferência na borda, sem depender de nuvem</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Rodar o modelo no próprio dispositivo, com pouca memória e sem enviar dado bruto.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>TensorFlow Lite Micro</em> quantizado no MCU; só eventos e metadados sobem, preservando banda e privacidade.</p>
       </article>
     </div>
 
@@ -394,7 +420,7 @@
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Onde esses desafios apareceram</p>
-      <h2>Domínios de negócio já resolvidos.</h2>
+      <h2>Domínios de negócio em que já entregamos.</h2>
     </div>
     <div class="domains">
       <span class="domain">Telecom / redes ópticas</span>
@@ -402,6 +428,8 @@
       <span class="domain">Fiscal (NF-e)</span>
       <span class="domain">Fintech</span>
       <span class="domain">IoT industrial</span>
+      <span class="domain">Sistemas embarcados</span>
+      <span class="domain">Wearables</span>
       <span class="domain">Visão computacional</span>
       <span class="domain">Aquicultura</span>
       <span class="domain">Educação</span>
@@ -420,7 +448,7 @@
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Stack completa</p>
-      <h2>O arsenal técnico por trás das soluções.</h2>
+      <h2>As tecnologias por trás das soluções.</h2>
       <p>Tecnologias usadas em produção, PoCs e P&amp;D ao longo do acervo.</p>
     </div>
     <div class="stackwrap">
@@ -473,6 +501,12 @@
         </div>
       </div>
       <div class="stackrow">
+        <h4>Embarcados <small>&amp; hardware</small></h4>
+        <div class="tags">
+          <span class="t">ESP32 / ESP-IDF</span><span class="t">STM32</span><span class="t">Arduino</span><span class="t">Raspberry Pi</span><span class="t">C / C++ embarcado</span><span class="t">FreeRTOS</span><span class="t">Zephyr</span><span class="t">PlatformIO</span><span class="t">Modbus RTU/TCP</span><span class="t">RS-485 / serial</span><span class="t">I2C / SPI</span><span class="t">CAN bus</span><span class="t">BLE / Bluetooth</span><span class="t">LoRa / LoRaWAN</span><span class="t">MQTT</span><span class="t">OTA</span><span class="t">TinyML / TFLite Micro</span><span class="t">KiCad (PCB)</span>
+        </div>
+      </div>
+      <div class="stackrow">
         <h4>Object storage</h4>
         <div class="tags">
           <span class="t">AWS S3</span><span class="t">Cloudflare R2</span><span class="t">MinIO</span><span class="t">Tigris</span>
@@ -510,7 +544,7 @@
   <div class="wrap cta-grid">
     <div>
       <p class="eyebrow">Vamos conversar</p>
-      <h2>Se o desafio é difícil, é o meu tipo de problema.</h2>
+      <h2>Precisa de uma equipe de engenharia para um problema difícil?</h2>
     </div>
     <div class="contacts">
       <a class="contact" href="mailto:danieldgt@gmail.com"><span>E-mail</span> danieldgt@gmail.com</a>
@@ -519,7 +553,7 @@
     </div>
   </div>
   <div class="wrap colophon">
-    <span>Daniel Alencar Barros Tavares · Arquiteto de Software &amp; Líder Técnico</span>
+    <span>Daniel Alencar Barros Tavares · Arquitetura de Software &amp; Equipe de Engenharia</span>
     <span>Projetos e empresas anonimizados por confidencialidade</span>
   </div>
 </footer>
