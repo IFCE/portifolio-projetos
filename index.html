@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Daniel Alencar Barros Tavares — Desafios de Engenharia &amp; Soluções</title>
-<meta name="description" content="Catálogo anonimizado de desafios técnicos e as soluções aplicadas: visão computacional (PDI + redes neurais), sistemas distribuídos, arquitetura cloud, serverless, sistemas embarcados e agentes de IA em produção. Stack completa ao final.">
-<meta name="author" content="Daniel Alencar Barros Tavares">
+<title>LaVIA — Visão Computacional &amp; IA</title>
+<meta name="description" content="LaVIA — Laboratório de Visão Computacional e Inteligência Artificial. Projetos de P&amp;D anonimizados: visão computacional (PDI + redes neurais), agentes de IA, sistemas embarcados, sistemas distribuídos e cloud. Professores Daniel Alencar, Ronaldo Milfont e Thiago Queiroz.">
+<meta name="author" content="LaVIA — Laboratório de Visão Computacional e Inteligência Artificial">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f141a" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Daniel Alencar Barros Tavares — Desafios de Engenharia & Soluções">
-<meta property="og:description" content="Problemas difíceis de engenharia e as abordagens que os resolveram — visão computacional, sistemas distribuídos, cloud e IA em produção.">
+<meta property="og:title" content="LaVIA — Laboratório de Visão Computacional e Inteligência Artificial">
+<meta property="og:description" content="Problemas reais de visão computacional e IA, da pesquisa à produção — e as decisões técnicas que os resolveram.">
 <meta name="twitter:card" content="summary_large_image">
 <style>
   html { -webkit-text-size-adjust: 100%; }
@@ -133,6 +133,7 @@
   .lede { font-size: clamp(17px, 1.9vw, 21px); color: var(--muted); max-width: var(--measure); margin: 22px 0 0; text-wrap: pretty; }
   .cred { font-family: var(--font-mono); font-size: 13.5px; color: var(--faint); letter-spacing: .02em; margin: 26px 0 0; }
   .cred b { color: var(--ink); font-weight: 600; }
+  .lede b { color: var(--ink); font-weight: 600; }
   .cta-row { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 30px; }
   .btn {
     display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 550;
@@ -215,6 +216,20 @@
   .band .t { background: var(--card); }
   @media (max-width: 720px) { .stackrow { grid-template-columns: 1fr; gap: 12px; } }
 
+  /* team */
+  .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .member {
+    display: flex; align-items: center; gap: 16px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; box-shadow: var(--shadow-sm);
+  }
+  .avatar {
+    flex: none; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--accent-wash); color: var(--accent-ink); font-family: var(--font-mono); font-weight: 600; font-size: 15px;
+  }
+  .member h3 { margin: 0; font-size: 17.5px; letter-spacing: -.015em; font-weight: 640; }
+  .member p { margin: 3px 0 0; font-size: 14.5px; color: var(--muted); line-height: 1.45; }
+  @media (max-width: 900px) { .team { grid-template-columns: 1fr; } }
+
   /* footer */
   footer.cta { border-top: 1px solid var(--line); background: var(--bg-alt); }
   .cta-grid { display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; padding-block: clamp(46px, 6vw, 82px); }
@@ -233,10 +248,11 @@
 
 <nav class="top">
   <div class="wrap nav-row">
-    <div class="nav-brand">Daniel Alencar Barros Tavares<small>Arquitetura de Software &amp; Equipe de Engenharia</small></div>
+    <div class="nav-brand">LaVIA<small>Visão Computacional &amp; Inteligência Artificial</small></div>
     <div class="nav-links">
-      <a href="#desafios">Desafios</a>
+      <a href="#desafios">Projetos</a>
       <a href="#stack">Stack</a>
+      <a href="#equipe">Equipe</a>
     </div>
   </div>
 </nav>
@@ -244,12 +260,13 @@
 <div class="hero">
   <div class="wrap">
     <div class="hero-inner">
-      <span class="avail"><span class="dot" aria-hidden="true"></span> Disponível para novos projetos e parcerias</span>
-      <h1>Problemas difíceis de engenharia, <span class="accent">resolvidos em produção</span>.</h1>
-      <p class="lede">Somos uma equipe de engenharia liderada por Daniel Alencar, arquiteto de software com 25 anos de estrada. Abaixo, um recorte anonimizado de problemas reais que resolvemos — visão computacional, sistemas distribuídos, cloud, sistemas embarcados e IA em produção — com a decisão técnica de cada um e a stack completa ao final. É o tipo de trabalho que levamos para o seu time.</p>
-      <p class="cred">25+ anos de carreira · 10+ times liderados · <b>20+ domínios de negócio</b> · <b>~110 repositórios</b> · 6+ linguagens em produção</p>
+      <span class="avail"><span class="dot" aria-hidden="true"></span> Aberto a projetos de P&amp;D e parcerias</span>
+      <h1>Laboratório de Visão Computacional e Inteligência Artificial: <span class="accent">da pesquisa à produção</span>.</h1>
+      <p class="lede">O LaVIA reúne os professores <b>Daniel Alencar</b>, <b>Ronaldo Milfont</b> e <b>Thiago Queiroz</b> em torno de problemas reais de visão computacional e IA — e da engenharia necessária para levá-los a campo: sistemas embarcados, sistemas distribuídos e cloud. Abaixo, um recorte anonimizado dos projetos, com a decisão técnica de cada um e a stack completa ao final.</p>
+      <p class="cred">3 professores · <b>20+ domínios de aplicação</b> · <b>~110 repositórios</b> · 6+ linguagens em produção</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#desafios">Ver os desafios ↓</a>
+        <a class="btn btn-primary" href="#desafios">Ver os projetos ↓</a>
+        <a class="btn btn-ghost" href="#equipe">Conhecer a equipe</a>
       </div>
     </div>
   </div>
@@ -258,12 +275,12 @@
 <section id="desafios">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">Desafio → Solução</p>
-      <h2>Cada caso: um problema real, a decisão técnica e o que ela entregou.</h2>
-      <p>O que você contrata não é uma lista de tecnologias, e sim uma equipe com critério para escolher a certa em cada contexto. É isso que os casos abaixo mostram.</p>
+      <p class="eyebrow">Projetos · Desafio → Solução</p>
+      <h2>Cada projeto: um problema real, a decisão técnica e o que ela entregou.</h2>
+      <p>Mais do que uma lista de tecnologias, um laboratório com critério para escolher a abordagem certa em cada contexto. É isso que os casos abaixo mostram.</p>
     </div>
 
-    <div class="group">IA aplicada &amp; visão computacional</div>
+    <div class="group">Visão computacional</div>
     <div class="cases">
       <article class="case">
         <span class="tag">Carcinicultura</span>
@@ -278,16 +295,86 @@
         <p class="sol"><span class="lbl">Solução</span>Embeddings <em>DINOv2</em> + <em>vector store</em> para similaridade few-shot; revisão humana só por exceção.</p>
       </article>
       <article class="case">
-        <span class="tag">Engenharia acústica</span>
-        <h3>"Auralizar" o ruído dentro de edificações</h3>
-        <p class="prob"><span class="lbl">Desafio</span>Tornar audível o ruído percebido dentro de um apartamento a partir da planta (DXF).</p>
-        <p class="sol"><span class="lbl">Solução</span>Pipeline serverless: DXF → <em>GAN de super-resolução espectral</em> → auralização com atenuação física.</p>
+        <span class="tag">Indústria têxtil</span>
+        <h3>Peça confeccionada confere com a peça-piloto?</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Aprovar peças de oficinas terceirizadas só por fotos de celular, com luz, enquadre e rotação sem controle.</p>
+        <p class="sol"><span class="lbl">Solução</span>Pipeline de <em>PDI em etapas plugáveis e versionadas</em>: Otsu, derotação pelo eixo principal, costura por <em>Canny/Sobel</em> e acabamento com <em>registro fino ECC</em>; cada etapa devolve um extrato auditável.</p>
       </article>
+      <article class="case">
+        <span class="tag">Metrologia visual</span>
+        <h3>Medir em milímetros a partir de uma foto</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Os defeitos que a similaridade não via eram de medida — punho estreitado, ribana mais larga — e foto de celular não tem escala.</p>
+        <p class="sol"><span class="lbl">Solução</span>Escala por <em>objeto de referência no quadro</em> (ajuste de elipse, calibrado em 705 imagens); ribana por <em>RANSAC</em> e bainha pela <em>periodicidade da costura</em> (autocorrelação + Huber). AUROC 0,49 → 0,67.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Textura · veto</span>
+        <h3>Tecido trocado não pode passar na média</h3>
+        <p class="prob"><span class="lbl">Desafio</span>A média ponderada de subescores aprovava peça com tecido trocado ou sem etiqueta (0 de 27 reprovações detectadas).</p>
+        <p class="sol"><span class="lbl">Solução</span><em>Especialistas com veto</em> (S = min(média, especialistas)): trama por <em>flat-field + DoG</em>, textura por <em>Gabor</em>, etiqueta por <em>SIFT</em>; na falta de evidência, a etapa se abstém em vez de pontuar.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Captura em campo</span>
+        <h3>Foto boa na origem, feita por quem não é técnico</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Fotos chegavam desfocadas, estouradas ou tortas, inviabilizando a comparação.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>Silhueta-guia</em> gerada a partir da máscara de referência + <em>gate de qualidade no dispositivo</em> (nitidez, exposição e clipping medidos sobre a peça); correções via <em>OTA</em>.</p>
+      </article>
+      <article class="case">
+        <span class="tag">MLOps · avaliação</span>
+        <h3>Evoluir o modelo sem regredir, com poucos rótulos</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Rótulos chegam do campo aos poucos e cada mudança de algoritmo arrisca piorar o veredito.</p>
+        <p class="sol"><span class="lbl">Solução</span>Candidatos em <em>shadow mode</em> por etapa; bancada offline com <em>kappa de Cohen, AUROC e F1</em>; <em>gold set</em> versionado exportado em <em>COCO</em>; ADRs em que a mudança só fica se a métrica melhorar.</p>
+      </article>
+    </div>
+
+    <div class="group">IA confiável, LLMs &amp; agentes</div>
+    <div class="cases">
       <article class="case">
         <span class="tag">Agentes de IA</span>
         <h3>Assistente de IA confiável sobre dados de negócio</h3>
         <p class="prob"><span class="lbl">Desafio</span>LLM consultar dados sem alucinar, sem estourar custo e respeitando as permissões de cada usuário.</p>
         <p class="sol"><span class="lbl">Solução</span><em>Multiagente</em> + <em>RAG</em>; <em>tool-calling tenant-aware com RBAC</em>; estratégia determinístico-primeiro para conter custo.</p>
+      </article>
+      <article class="case">
+        <span class="tag">IA documental</span>
+        <h3>Extrair dados de contratos sem o LLM inventar</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Ler campos e tabelas de itens em documentos públicos, muitos escaneados, com zero tolerância a valor inventado.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>LangGraph</em>: extrator cita página e trecho literal; um <em>juiz que só pode reduzir</em> (confirmar, aparar ou negar, com travas em código); proveniência por coordenada via <em>OCR</em> e checagem aritmética.</p>
+      </article>
+      <article class="case">
+        <span class="tag">IA confiável · P&amp;D</span>
+        <h3>Saber quando <em>não</em> decidir</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Um LLM responde com a mesma fluência quando acerta e quando erra — inaceitável em decisões operacionais.</p>
+        <p class="sol"><span class="lbl">Solução</span>Interpretação por <em>visão + SLM</em>, regras como grafo de restrições, <em>Conformal Prediction</em> para quantificar incerteza e escalonamento humano; autonomia concedida em degraus (observa → sugere → executa).</p>
+      </article>
+      <article class="case">
+        <span class="tag">Otimização de LLM</span>
+        <h3>Roteador rápido de ferramentas, validado em sombra</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Cada resposta gastava ~3,5 s numa chamada ao LLM só para escolher a ferramenta.</p>
+        <p class="sol"><span class="lbl">Solução</span>Classificador barato (~0,6 s, custo ~13× menor) em <em>shadow mode</em> ao lado do LLM, registrando confiança e margem; <em>91,2% de concordância</em> em 227 perguntas reais antes de assumir.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Benchmark de LLMs</span>
+        <h3>Qual modelo aguenta um agente de verdade?</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Reduzir custo de agentes analíticos sem perder qualidade; modelos com boa prosa falhavam na saída estruturada.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>17 modelos</em> medidos no contrato real (tool-calling ≠ structured output); cascata <em>analista → formatador</em> com schema estrito; alucinação numérica medida antes de pagar por um juiz.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Voz · LLM local</span>
+        <h3>Entrevista por voz sem a voz sair da máquina</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Conduzir triagens por áudio em português, personalizadas pela vaga, sem enviar voz a serviços externos.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>ASR faster-whisper</em> e <em>TTS neural</em> (XTTS-v2 / Piper ONNX) 100% locais; roteiro gerado pelo LLM cruzando vaga × currículo; ranking determinístico e auditável.</p>
+      </article>
+      <article class="case">
+        <span class="tag">NLP · embeddings</span>
+        <h3>Normalizar cargos para uma taxonomia oficial</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Mapear cargos em texto livre para códigos ocupacionais oficiais e estruturar currículos sem expor dados pessoais.</p>
+        <p class="sol"><span class="lbl">Solução</span>Recuperação por <em>embeddings multilíngues (e5)</em> + rerank com limiar calibrado; crosswalk para taxonomias internacionais; extração com <em>LLM local</em> e revisão humana sempre.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Engenharia acústica</span>
+        <h3>"Auralizar" o ruído dentro de edificações</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Tornar audível o ruído percebido dentro de um apartamento a partir da planta (DXF).</p>
+        <p class="sol"><span class="lbl">Solução</span>Pipeline serverless: DXF → <em>GAN de super-resolução espectral</em> → auralização com atenuação física.</p>
       </article>
       <article class="case">
         <span class="tag">Geração de código</span>
@@ -300,6 +387,22 @@
         <h3>Apoio à decisão clínica com roteamento local/remoto</h3>
         <p class="prob"><span class="lbl">Desafio</span>Predizer CID-10 e recuperar protocolos preservando privacidade e controlando custo.</p>
         <p class="sol"><span class="lbl">Solução</span><em>Roteador local × remoto</em> por sensibilidade; <em>RAG + reranking</em>; PII nunca é enviada ao LLM.</p>
+      </article>
+    </div>
+
+    <div class="group">Engenharia de software assistida por IA</div>
+    <div class="cases">
+      <article class="case">
+        <span class="tag">Agentes de código</span>
+        <h3>Vários agentes em paralelo, sem "teste verde de fachada"</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Entregar dezenas de tarefas por rodada com agentes de código sem que o código passe só porque os testes ficaram verdes.</p>
+        <p class="sol"><span class="lbl">Solução</span><em>Stack isolada por agente</em>, <em>verificador adversarial</em> que reprova em passes sucessivos, <em>teste de mutação</em> para matar testes fracos, <em>ArchUnit</em> e <em>Testcontainers</em>.</p>
+      </article>
+      <article class="case">
+        <span class="tag">Low-code · geração</span>
+        <h3>Editar visualmente um app gerado, sem perder ajustes</h3>
+        <p class="prob"><span class="lbl">Desafio</span>Permitir edição visual de um frontend gerado por agentes sem apagar mudanças feitas à mão depois.</p>
+        <p class="sol"><span class="lbl">Solução</span>O editor altera a <em>especificação</em>, não o código; <em>merge em 3 vias</em> só reescreve o que mudou; fila de deploy serializada e <em>semáforo de concorrência</em> por usuário.</p>
       </article>
     </div>
 
@@ -421,7 +524,7 @@
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Onde esses desafios apareceram</p>
-      <h2>Domínios de negócio em que já entregamos.</h2>
+      <h2>Domínios de aplicação em que já atuamos.</h2>
     </div>
     <div class="domains">
       <span class="domain">Telecom / redes ópticas</span>
@@ -433,6 +536,10 @@
       <span class="domain">Wearables</span>
       <span class="domain">Visão computacional</span>
       <span class="domain">Aquicultura</span>
+      <span class="domain">Indústria têxtil</span>
+      <span class="domain">Contratos públicos</span>
+      <span class="domain">Pagamentos · Smart POS</span>
+      <span class="domain">Marketing · atribuição</span>
       <span class="domain">Educação</span>
       <span class="domain">RH · recrutamento</span>
       <span class="domain">Saúde (RAG médico)</span>
@@ -514,9 +621,21 @@
         </div>
       </div>
       <div class="stackrow">
+        <h4>Visão computacional</h4>
+        <div class="tags">
+          <span class="t">OpenCV</span><span class="t">PDI clássico</span><span class="t">Otsu / morfologia</span><span class="t">Canny / Sobel</span><span class="t">Registro ECC</span><span class="t">Gabor / DoG</span><span class="t">SIFT</span><span class="t">RANSAC / Huber</span><span class="t">Metrologia por referência de escala</span><span class="t">Gate de qualidade de imagem</span><span class="t">DINOv2</span><span class="t">ONNX Runtime</span><span class="t">Redes siamesas</span><span class="t">OCR (Tesseract / OCRmyPDF)</span><span class="t">COCO</span>
+        </div>
+      </div>
+      <div class="stackrow">
+        <h4>Avaliação <small>&amp; MLOps</small></h4>
+        <div class="tags">
+          <span class="t">Shadow mode / A/B</span><span class="t">Kappa de Cohen</span><span class="t">AUROC</span><span class="t">F1 por classe</span><span class="t">Gold set versionado</span><span class="t">Conformal Prediction</span><span class="t">Abstenção &amp; veto</span><span class="t">LLM-as-judge</span><span class="t">Benchmark de LLMs</span>
+        </div>
+      </div>
+      <div class="stackrow">
         <h4>IA / LLM / ML</h4>
         <div class="tags">
-          <span class="t">PDI</span><span class="t">Visão computacional</span><span class="t">Redes neurais / Deep Learning</span><span class="t">PyTorch</span><span class="t">TensorFlow / Keras</span><span class="t">DINOv2</span><span class="t">GAN</span><span class="t">Smile ML</span><span class="t">XAI (SHAP-like)</span><span class="t">sentence-transformers</span><span class="t">cross-encoder reranking</span><span class="t">QLoRA</span><span class="t">LangChain</span><span class="t">LangGraph</span><span class="t">Mastra</span><span class="t">MCP</span><span class="t">RAG</span><span class="t">Ollama / vLLM</span><span class="t">Claude</span><span class="t">OpenAI</span><span class="t">OpenRouter</span><span class="t">Apache Commons Math</span>
+          <span class="t">Redes neurais / Deep Learning</span><span class="t">PyTorch</span><span class="t">TensorFlow / Keras</span><span class="t">DINOv2</span><span class="t">GAN</span><span class="t">Smile ML</span><span class="t">XAI (SHAP-like)</span><span class="t">sentence-transformers</span><span class="t">cross-encoder reranking</span><span class="t">QLoRA</span><span class="t">multilingual-e5</span><span class="t">faster-whisper (ASR)</span><span class="t">XTTS-v2 / Piper (TTS)</span><span class="t">Qwen2.5</span><span class="t">SLMs</span><span class="t">LangChain</span><span class="t">LangGraph</span><span class="t">Mastra</span><span class="t">MCP</span><span class="t">RAG</span><span class="t">Ollama / vLLM</span><span class="t">Claude</span><span class="t">OpenAI</span><span class="t">OpenRouter</span><span class="t">Apache Commons Math</span>
         </div>
       </div>
       <div class="stackrow">
@@ -528,7 +647,7 @@
       <div class="stackrow">
         <h4>Qualidade <small>&amp; testes</small></h4>
         <div class="tags">
-          <span class="t">JUnit / Mockito</span><span class="t">Testcontainers</span><span class="t">ArchUnit</span><span class="t">Vitest</span><span class="t">Playwright</span><span class="t">pytest / mypy</span><span class="t">JaCoCo</span><span class="t">Spring REST Docs</span><span class="t">ADRs</span>
+          <span class="t">Teste de mutação</span><span class="t">JUnit / Mockito</span><span class="t">Testcontainers</span><span class="t">ArchUnit</span><span class="t">Vitest</span><span class="t">Playwright</span><span class="t">pytest / mypy</span><span class="t">JaCoCo</span><span class="t">Spring REST Docs</span><span class="t">ADRs</span>
         </div>
       </div>
       <div class="stackrow">
@@ -541,18 +660,41 @@
   </div>
 </section>
 
+<section id="equipe" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Equipe</p>
+      <h2>Os professores do laboratório.</h2>
+    </div>
+    <div class="team">
+      <article class="member">
+        <span class="avatar" aria-hidden="true">DA</span>
+        <div><h3>Daniel Alencar</h3><p>Professor · arquitetura de software, sistemas distribuídos e IA em produção</p></div>
+      </article>
+      <article class="member">
+        <span class="avatar" aria-hidden="true">RM</span>
+        <div><h3>Ronaldo Milfont</h3><p>Professor</p></div>
+      </article>
+      <article class="member">
+        <span class="avatar" aria-hidden="true">TQ</span>
+        <div><h3>Thiago Queiroz</h3><p>Professor</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <footer class="cta">
   <div class="wrap cta-grid">
     <div>
       <p class="eyebrow">Vamos conversar</p>
-      <h2>Precisa de uma equipe de engenharia para um problema difícil?</h2>
+      <h2>Tem um problema de visão computacional ou IA para resolver?</h2>
     </div>
     <div class="contacts">
       <a class="contact" href="https://wa.me/5585999145655" target="_blank" rel="noopener"><span>WhatsApp</span> (85) 99914-5655</a>
     </div>
   </div>
   <div class="wrap colophon">
-    <span>Daniel Alencar Barros Tavares · Arquitetura de Software &amp; Equipe de Engenharia</span>
+    <span>LaVIA · Laboratório de Visão Computacional e Inteligência Artificial</span>
     <span>Projetos e empresas anonimizados por confidencialidade</span>
   </div>
 </footer>
